@@ -5,7 +5,7 @@
 
 [![MIT License][mit-badge]][mit-url]
 [![Apache-2.0 License][apache-badge]][apache-url]
-[![CI Status][actions-badge]][actions-url]
+
 
 
 
