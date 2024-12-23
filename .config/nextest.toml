@@ -1,0 +1,6 @@
+[test-groups]
+serial-integration = { max-threads = 1 }
+
+[[profile.default.overrides]]
+filter = 'package(mev-e2e-tests)'
+test-group = 'serial-integration'

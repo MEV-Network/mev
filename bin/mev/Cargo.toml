@@ -1,0 +1,48 @@
+[package]
+name = "mev"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "MEV is a OP Stack rollup."
+default-run = "mev"
+
+[lints]
+workspace = true
+
+[dependencies]
+alloy-signer-local.workspace = true
+alloy-network.workspace = true
+alloy-primitives.workspace = true
+alloy-provider.workspace = true
+alloy-rpc-client.workspace = true
+mev-node.workspace = true
+mev-wallet.workspace = true
+mev-walltime.workspace = true
+eyre.workspace = true
+tracing.workspace = true
+reth-cli-util.workspace = true
+reth-node-builder.workspace = true
+reth-optimism-node = { workspace = true, features = ["js-tracer"] }
+reth-optimism-cli.workspace = true
+reth-provider.workspace = true
+clap = { workspace = true, features = ["derive"] }
+
+[features]
+default = ["jemalloc"]
+
+asm-keccak = ["reth-optimism-cli/asm-keccak"]
+
+jemalloc = ["reth-cli-util/jemalloc"]
+jemalloc-prof = ["jemalloc", "reth-cli-util/jemalloc-prof"]
+
+min-error-logs = ["tracing/release_max_level_error"]
+min-warn-logs = ["tracing/release_max_level_warn"]
+min-info-logs = ["tracing/release_max_level_info"]
+min-debug-logs = ["tracing/release_max_level_debug"]
+min-trace-logs = ["tracing/release_max_level_trace"]
+
+[[bin]]
+name = "mev"
+path = "src/main.rs"

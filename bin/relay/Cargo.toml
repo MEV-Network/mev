@@ -1,0 +1,37 @@
+[package]
+name = "mev-relay"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "MEV Relay is an EIP-7702 native transaction batcher and sponsor."
+
+[lints]
+workspace = true
+
+[dependencies]
+alloy-signer-local.workspace = true
+alloy-primitives.workspace = true
+alloy-provider.workspace = true
+alloy-rpc-client.workspace = true
+mev-wallet.workspace = true
+eyre.workspace = true
+jsonrpsee = { workspace = true, features = ["server"] }
+tracing.workspace = true
+reth-tracing.workspace = true
+clap = { workspace = true, features = ["derive", "env"] }
+url.workspace = true
+tokio = { workspace = true, features = ["rt", "macros"] }
+
+[features]
+default = []
+min-error-logs = ["tracing/release_max_level_error"]
+min-warn-logs = ["tracing/release_max_level_warn"]
+min-info-logs = ["tracing/release_max_level_info"]
+min-debug-logs = ["tracing/release_max_level_debug"]
+min-trace-logs = ["tracing/release_max_level_trace"]
+
+[[bin]]
+name = "relay"
+path = "src/main.rs"
